@@ -3,6 +3,7 @@
 <body>
     <div th:fragment="navbar">
         <nav class="navbar navbar-default">
+            <!--左边-->
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -12,14 +13,16 @@
                     <a class="navbar-brand" href="/">百家姓社区</a>
                 </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
+
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <!-- 搜索框 -->
                     <form class="navbar-form navbar-left">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="搜索话题">
                         </div>
                         <button type="submit" class="btn btn-default">搜索</button>
                     </form>
+                    <!--个人信息显示-->
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="/publish">发布</a>
@@ -30,9 +33,8 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">消息中心</a></li>
-                                <li><a href="#">个人资料</a></li>
-                                <li><a href="#">退出登录</a></li>
+                                <li><a href="/profile/questions">我的问题</a></li>
+                                <li><a href="/profile/replies">我的回复</a></li>
                             </ul>
                         </li>
                         <li th:if="${session.user == null}">

@@ -32,7 +32,6 @@ public class QuestionService {
             page = paginationDTO.getTotalPage();
         }
 
-
         //size*(page - 1)
         Integer offset = size * (page - 1);
         List<Question> questions = questionMapper.list(offset,size);
@@ -49,5 +48,14 @@ public class QuestionService {
         }
         paginationDTO.setQuestions(questionDtoList);
         return paginationDTO;
+    }
+
+    public QuestionDto getById(Integer id) {
+        Question question = questionMapper.getById(id);
+        QuestionDto questionDto = new QuestionDto();
+        User user = userMapper.findByID(question.getCreator());
+        questionDto.setUser(user);
+        BeanUtils.copyProperties(question,questionDto);
+        return questionDto;
     }
 }
